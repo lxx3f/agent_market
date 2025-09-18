@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+/* 可选：统一主色，提升一致性（与 Element Plus 主色协调） */
+:root {
+    --el-color-primary: #3b82f6;
+}
+
+/* Tailwind blue-500 */
