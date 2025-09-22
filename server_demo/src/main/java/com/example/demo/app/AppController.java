@@ -2,6 +2,7 @@ package com.example.demo.app;
 
 import com.example.demo.common.ApiResponse;
 import com.example.demo.app.vo.AppVO;
+import com.example.demo.common.BusinessException;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -12,7 +13,7 @@ import java.util.*;
 @RequestMapping("/api/apps")
 public class AppController {
 
-    @GetMapping
+    @GetMapping({"","/"})
     public ApiResponse<List<AppVO>> list() {
         List<AppVO> apps = new ArrayList<>();
 
@@ -54,4 +55,11 @@ public class AppController {
 
         return ApiResponse.ok(apps);
     }
+
+    @GetMapping("/test-biz-error")
+    public ApiResponse<Void> testBizError() {
+        // 模拟业务场景报错：用户余额不足
+        throw new BusinessException(10001, "余额不足，请充值后再试");
+    }
+
 }

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api")
 public class HelloController {
+    // 存活探针
     @GetMapping("/ping")
     public String ping() { return "pong"; }
 

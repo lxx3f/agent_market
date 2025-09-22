@@ -8,6 +8,10 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.resource.NoResourceFoundException;
 
+/**
+ * 全局异常处理器
+ * 统一处理各种异常，返回标准 API 响应
+ */
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
