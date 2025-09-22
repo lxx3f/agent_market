@@ -1,10 +1,21 @@
 import { apps as mock } from '@/mock/apps'
+import { http, USE_MOCK } from '@/utils/http'
 
-// 默认仍用 mock；联调只需把 .env 中 VITE_USE_MOCK 改为 false
-const USE_MOCK = (import.meta.env.VITE_USE_MOCK ?? 'true') !== 'false'
+function normalize(app) {
+    return {
+        ...app,
+        price: Number(app.price ?? 0),
+        rating: Number(app.rating ?? 0),
+        downloads: Number(app.downloads ?? 0),
+        reviews: Number(app.reviews ?? 0),
+        // publishedAt 后端为 "YYYY-MM-DD"，目前仅展示，保留字符串即可
+    }
+}
 
 export async function getApps() {
-    if (USE_MOCK) return mock
+    if (USE_MOCK) return mock.map(normalize);
 
-    return []
+    // 由于响应拦截器已解包，get('/apps') 直接返回后端的 data（数组）
+    const list = await http.get('/apps')
+    return (Array.isArray(list) ? list : []).map(normalize)
 }

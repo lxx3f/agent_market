@@ -1,3 +1,6 @@
+/**
+ * 模拟后端数据源
+ */
 export const apps = [
     {
         id: 1,
