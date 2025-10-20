@@ -7,8 +7,8 @@ const list = ref([])
 const loading = ref(false)
 const error = ref('')
 
-// 新增：排序相关状态
-const sortKey = ref('none') // 'none' | 'rating' | 'downloads' （根据你的数据字段调整）
+// 排序相关状态
+const sortKey = ref('none') // 'none' | 'rating' | 'downloads' 
 const sortOrder = ref('desc') // 'desc' 或 'asc'
 
 
